@@ -1,0 +1,16 @@
+{
+  "name": "paloma-examples",
+  "description": "Examples using paloma",
+  "version": "0.1.0",
+  "dependencies": {
+    "paloma": "^0.1.0",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/palomajs/paloma-examples"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 4"
+  }
+}
