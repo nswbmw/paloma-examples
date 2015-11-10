@@ -3,7 +3,7 @@
   "description": "Examples using paloma",
   "version": "0.1.0",
   "dependencies": {
-    "paloma": "^0.1.0",
+    "paloma": "^0.1.0"
   },
   "repository": {
     "type": "git",
