@@ -5,6 +5,7 @@ const app = new Paloma();
 const validator = require('validator-it');
 const convert = require('koa-convert');
 const bodyparser = require('koa-bodyparser');
+const usage = require('../usage');
 
 app.use(convert(bodyparser()));
 
@@ -34,4 +35,15 @@ app.route({
   }
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  usage([{
+    req: 'curl -d "user=neo&age=26" http://localhost:3000/',
+    res: 'Hello, Paloma'
+  }, {
+    req: 'curl -d "age=26" http://localhost:3000/',
+    res: 'No user'
+  }, {
+    req: 'curl -d "user=neoage=shit" http://localhost:3000/',
+    res: '[body.age: undefined] ✖ isNumeric'
+  }]);
+});

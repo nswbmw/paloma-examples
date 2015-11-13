@@ -4,6 +4,7 @@ const bodyparser = require('koa-bodyparser');
 const convert = require('koa-convert');
 const Paloma = require('paloma');
 const app = new Paloma();
+const usage = require('../usage');
 
 app.use(convert(bodyparser()));
 
@@ -24,4 +25,6 @@ app.use((ctx, next) => {
   console.log('2');
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  usage('curl -d "foo=bar" http://localhost:3000', '{"foo": "bar"}');
+});
