@@ -35,10 +35,10 @@ app.route({
 
 app.listen(3000, () => {
   usage([{
-    req: 'http://localhost:3000',
+    req: 'curl http://localhost:3000',
     res: 'paloma'
   }, {
-    req: 'http://localhost:3000/anything',
+    req: 'curl http://localhost:3000/anything',
     res: '<h1>Sorry, <code>/123</code> Not Found</h1>'
   }]);
 });

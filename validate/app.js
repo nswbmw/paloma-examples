@@ -43,7 +43,7 @@ app.listen(3000, () => {
     req: 'curl -d "age=26" http://localhost:3000/',
     res: 'No user'
   }, {
-    req: 'curl -d "user=neoage=shit" http://localhost:3000/',
-    res: '[body.age: undefined] ✖ isNumeric'
+    req: 'curl -d "user=neo&age=shit" http://localhost:3000/',
+    res: '[body.age: shit] ✖ isNumeric'
   }]);
 });
