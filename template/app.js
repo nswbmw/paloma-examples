@@ -2,6 +2,7 @@
 
 const Paloma = require('paloma');
 const app = new Paloma();
+const usage = require('../usage');
 
 app.controller('indexCtrl', function (ctx, next, indexService) {
   ctx.body = indexService.getName();
@@ -32,4 +33,12 @@ app.route({
   template: '404View'
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  usage([{
+    req: 'curl http://localhost:3000',
+    res: 'paloma'
+  }, {
+    req: 'curl http://localhost:3000/anything',
+    res: '<h1>Sorry, <code>/123</code> Not Found</h1>'
+  }]);
+});

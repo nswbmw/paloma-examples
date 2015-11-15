@@ -3,8 +3,10 @@
   "description": "Examples using paloma",
   "version": "0.2.0",
   "dependencies": {
+    "chalk": "^1.1.1",
     "koa-bodyparser": "^2.0.1",
     "koa-convert": "^1.1.0",
+    "lodash": "^3.10.1",
     "paloma": "^0.2.0",
     "validator-it": "^1.1.0"
   },
