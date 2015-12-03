@@ -4,7 +4,8 @@ const Paloma = require('paloma');
 const app = global.app = new Paloma();
 const usage = require('../usage');
 
-
+// to use another template engine =)
+app.engine = 'jade';
 app.controller('indexCtrl', function (ctx, next, indexService) {
   ctx.body = indexService.getName();
 });
@@ -22,7 +23,6 @@ app.service('indexService', function () {
 app.load('views');
 
 app.route({
-  engine: 'jade',
   method: 'GET',
   path: '/',
   controller: 'indexCtrl',
@@ -30,7 +30,6 @@ app.route({
 });
 
 app.route({
-  engine: 'jade',
   method: 'GET',
   path: '/(.+)',
   controller: '404Ctrl',
