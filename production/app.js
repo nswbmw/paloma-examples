@@ -7,7 +7,6 @@ const usage = require('../usage');
 app.load('services');
 app.load('controllers');
 app.load('routes');
-app.load('views');
 
 app.constant('_', require('lodash'));
 
@@ -17,7 +16,7 @@ app.listen(3000, () => {
 
   usage([{
     req: 'curl http://localhost:3000/',
-    res: '\nThis is index page'
+    res: 'This is index page'
   }, {
     req: 'curl http://localhost:3000/matrix',
     res: `matrix - posted by ${user}`

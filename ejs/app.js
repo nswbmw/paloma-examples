@@ -1,47 +1,56 @@
 'use strict';
 
+const path = require('path');
+const co = require('co');
 const Paloma = require('paloma');
 const app = global.app = new Paloma();
+const render = require('koa-ejs');
 const usage = require('../usage');
 
-// to use another template engine =)
-app.engine = 'jade';
+render(app, {
+  root: path.join(__dirname, 'views'),
+  layout: false,
+  cache: false,
+  debug: true
+});
+app.context.render = co.wrap(app.context.render);
+
 app.controller('indexCtrl', function (ctx, next, indexService) {
-  ctx.body = indexService.getName();
+  return ctx.render('index', {
+    name: indexService.getName()
+  });
 });
 
 app.controller('404Ctrl', function (ctx, next) {
-  ctx.body = 'Sorry';
+  return ctx.render('404', {
+    path: ctx.path
+  });
 });
 
 app.service('indexService', function () {
   this.getName = function () {
-    return 'paloma';
+    return 'Paloma';
   };
 });
-
-app.load('views');
 
 app.route({
   method: 'GET',
   path: '/',
-  controller: 'indexCtrl',
-  template: 'homeView'
+  controller: 'indexCtrl'
 });
 
 app.route({
   method: 'GET',
   path: '/(.+)',
-  controller: '404Ctrl',
-  template: '404View'
+  controller: '404Ctrl'
 });
 
 app.listen(3000, () => {
   usage([{
     req: 'curl http://localhost:3000',
-    res: '<h1>home</h1><hr/><strong>powered by jade</strong>'
+    res: '<h1>Hello Paloma, This is index page</h1>'
   }, {
     req: 'curl http://localhost:3000/anything',
-    res: '<h1>Sorry, <code>/anything</code> Not Found</h1>'
+    res: 'Not Found: anything'
   }]);
 });
