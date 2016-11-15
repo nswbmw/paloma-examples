@@ -51,6 +51,6 @@ app.listen(3000, () => {
     res: '<h1>Hello Paloma, This is index page</h1>'
   }, {
     req: 'curl http://localhost:3000/anything',
-    res: 'Not Found: /anything'
+    res: '<p>Not Found: /anything</p>'
   }]);
 });

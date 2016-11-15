@@ -10,7 +10,7 @@ app.controller('indexCtrl', function (ctx, next, indexService) {
 
 app.service('indexService', function () {
   this.getName = function () {
-    return 'paloma';
+    return 'Paloma';
   };
 });
 
@@ -21,5 +21,5 @@ app.route({
 });
 
 app.listen(3000, () => {
-  usage('curl http://localhost:3000', 'Hello, paloma');
+  usage('curl http://localhost:3000', 'Hello, Paloma');
 });
