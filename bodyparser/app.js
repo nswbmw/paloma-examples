@@ -1,12 +1,11 @@
 'use strict';
 
 const bodyparser = require('koa-bodyparser');
-const convert = require('koa-convert');
 const Paloma = require('paloma');
 const app = new Paloma();
 const usage = require('../usage');
 
-app.use(convert(bodyparser()));
+app.use(bodyparser());
 
 app.controller('indexCtrl', function (ctx, next) {
   console.log('1');

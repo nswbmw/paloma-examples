@@ -3,15 +3,14 @@
   "description": "Examples using paloma",
   "version": "0.3.0",
   "dependencies": {
-    "chalk": "^1.1.3",
+    "chalk": "^2.1.0",
     "co": "^4.6.0",
     "jade": "^1.11.0",
-    "koa-bodyparser": "^2.3.0",
-    "koa-convert": "^1.2.0",
-    "koa-ejs": "^3.0.0",
-    "lodash": "^4.17.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-ejs": "^4.1.0",
+    "lodash": "^4.17.4",
     "paloma": "*",
-    "validator-it": "^1.1.0"
+    "validator-it": "^2.1.0"
   },
   "repository": {
     "type": "git",

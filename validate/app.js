@@ -3,11 +3,10 @@
 const Paloma = require('paloma');
 const app = new Paloma();
 const validator = require('validator-it');
-const convert = require('koa-convert');
 const bodyparser = require('koa-bodyparser');
 const usage = require('../usage');
 
-app.use(convert(bodyparser()));
+app.use(bodyparser());
 
 app.controller('indexCtrl', function (ctx, next, indexService) {
   ctx.body = indexService.getBody();
@@ -31,7 +30,12 @@ app.route({
         }
       }
     },
-    'body.age': validator.isNumeric()
+    'body.age': validator.isNumeric(),
+    'body.email': function checkEmail(email) {
+      if (typeof email !== 'undefined') {
+        return validator.isEmail()(email)
+      }
+    }
   }
 });
 
@@ -45,5 +49,8 @@ app.listen(3000, () => {
   }, {
     req: 'curl -d "user=neo&age=shit" http://localhost:3000/',
     res: '[body.age: shit] ✖ isNumeric'
+  }, {
+    req: 'curl -d "user=neo&age=26&email=xxx" http://localhost:3000/',
+    res: '[body.email: xxx] ✖ isEmail'
   }]);
 });
